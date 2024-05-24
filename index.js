@@ -16,20 +16,21 @@ class Point {
 
 		if (x + deltaX > width) {
 			this.x = 2*width - x - deltaX;
-			this.deltaX = -deltaX;
+
+			this.deltaX = -f(4, 2);
 		}
 		else if (x + deltaX < 0) {
 			this.x = -x - deltaX;
-			this.deltaX = -deltaX;
+			this.deltaX = f(4, 2);
 		} else this.x += deltaX;
 
 		if (y + deltaY > height) {
 			this.y = 2*height - y - deltaY;
-			this.deltaY = -deltaY;
+			this.deltaY = -f(4, 2);
 		}
 		else if (y + deltaY < 0) {
 			this.y = -y - deltaY;
-			this.deltaY = -deltaY;
+			this.deltaY = f(4, 2);
 		} else this.y += deltaY;
 
 		this.i++;
@@ -91,6 +92,6 @@ function f(max, min=0) {
 function makeArr(pointCount = 4) {
 	let pointArr = [];
 	for (let i=0; i<pointCount; i++) 
-		pointArr.push(new Point(f(width), f(height), f(8, 4)/2, f(8, 4)/2));
+		pointArr.push(new Point(f(width), f(height), f(4, 2), f(4, 2)));
 	return pointArr;
 }
