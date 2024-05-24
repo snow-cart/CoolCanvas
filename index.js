@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () =>{
 	setInterval(() => {
 		drawLine(ctx, pointArrArr[0], strokeStyle="rgb(3 252 219 / 100%)");
 		drawLine(ctx, pointArrArr[1], strokeStyle="rgb(252 102 255 / 100%)");
-	}, 5);
+	}, 10);
 
 
 });
@@ -91,6 +91,6 @@ function f(max, min=0) {
 function makeArr(pointCount = 4) {
 	let pointArr = [];
 	for (let i=0; i<pointCount; i++) 
-		pointArr.push(new Point(f(width), f(height), f(5, 3), f(5, 3)));
+		pointArr.push(new Point(f(width), f(height), f(4, 2), f(4, 2)));
 	return pointArr;
 }
