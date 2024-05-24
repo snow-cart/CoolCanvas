@@ -41,7 +41,7 @@ class Point {
 		} else this.y += deltaY;
 
 		this.i++;
-		// console.log({'i': this.i, 'x': this.x, 'y': this.y, 'deltaX': this.deltaX, 'deltaY': this.deltaY});
+		console.log({'i': this.i, 'x': this.x, 'y': this.y, 'deltaX': this.deltaX, 'deltaY': this.deltaY});
 	}
 }
 
@@ -50,8 +50,8 @@ document.addEventListener("DOMContentLoaded", () =>{
 	var c = document.getElementById("myCanvas");
 	var ctx = c.getContext("2d");
 
-	width = c.width;
-	height = c.height;
+	c.width = width;
+	c.height = height;
 	ctx.lineWidth = 5;
 
 
@@ -140,7 +140,7 @@ function livelyPropertyListener(name, val) {
 
 function updateResolution() {
 	if (isPortrait === true) {
-		height = _widht;
+		height = _width;
 		width = _height;
 	}
 	else {
