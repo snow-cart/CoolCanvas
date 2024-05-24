@@ -41,15 +41,16 @@ document.addEventListener("DOMContentLoaded", () =>{
 
 	var c = document.getElementById("myCanvas");
 	var ctx = c.getContext("2d");
-	var cty = c.getContext("2d");
 
 	width = c.width;
 	height = c.height;
-
-	cty.rect(0, 0, 1000, 1000);
-	cty.fillStyle = "rgb(255, 255, 255, 5%)";
 	ctx.lineWidth = 5;
 
+
+	ctx.fillStyle = "rgb(15 15 15 / 100%)";
+	ctx.fillRect(0, 0, width, height);
+	ctx.fillStyle = "rgb(0 0 0 / 3%)";
+	ctx.lineJoin = "round";
 
 	document.addEventListener("click", () => {
 	drawLine(ctx, pointArr);
@@ -59,16 +60,15 @@ document.addEventListener("DOMContentLoaded", () =>{
 	let pointArrArr = [makeArr(pointCount), makeArr(pointCount)];
 
 	setInterval(() => {
-		drawLine(ctx, pointArrArr[0], strokeStyle="rgb(3 252 219 / 100%)");
-		drawLine(ctx, pointArrArr[1], strokeStyle="rgb(252 102 255 / 100%)");
+		drawLine(ctx, pointArrArr[0], strokeStyle="rgb(111 210 247 / 100%)");
+		drawLine(ctx, pointArrArr[1], strokeStyle="rgb(247 156 214 / 100%)");
 	}, 10);
 
 
 });
 
 function drawLine (ctx, pointArr=[], strokeStyle="rgb(3 252 219 / 100%)") {
-	
-	ctx.fillStyle = "rgb(0 0 0 / 5%)";
+
 	ctx.fillRect(0, 0, width, height);
 
 	ctx.strokeStyle = strokeStyle;
@@ -91,6 +91,6 @@ function f(max, min=0) {
 function makeArr(pointCount = 4) {
 	let pointArr = [];
 	for (let i=0; i<pointCount; i++) 
-		pointArr.push(new Point(f(width), f(height), f(4, 2), f(4, 2)));
+		pointArr.push(new Point(f(width), f(height), f(8, 4)/2, f(8, 4)/2));
 	return pointArr;
 }
