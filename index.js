@@ -127,7 +127,7 @@ function livelyPropertyListener(name, val) {
 
 		case "resolution":
 			_width = val;
-			_height = val;
+			_height = val * 0.5625;
 			updateResolution();
 			break;
 
