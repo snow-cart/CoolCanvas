@@ -50,10 +50,6 @@ document.addEventListener("DOMContentLoaded", () =>{
 	cty.fillStyle = "rgb(255, 255, 255, 5%)";
 	ctx.lineWidth = 5;
 
-	document.getElementById("myButton").addEventListener("click", () => {
-	for (let i=0; i<100; i++)
-		drawLine(ctx, pointArr);
-	});
 
 	document.addEventListener("click", () => {
 	drawLine(ctx, pointArr);
@@ -64,18 +60,18 @@ document.addEventListener("DOMContentLoaded", () =>{
 
 	setInterval(() => {
 		drawLine(ctx, pointArrArr[0], strokeStyle="rgb(3 252 219 / 100%)");
-		drawLine(ctx, pointArrArr[1], strokeStyle="rgb(3 252 219 / 100%)");
-	}, 10);
+		drawLine(ctx, pointArrArr[1], strokeStyle="rgb(252 102 255 / 100%)");
+	}, 5);
 
 
 });
 
 function drawLine (ctx, pointArr=[], strokeStyle="rgb(3 252 219 / 100%)") {
 	
-	ctx.fillStyle = "rgb(0 0 0 / 20%)";
+	ctx.fillStyle = "rgb(0 0 0 / 5%)";
 	ctx.fillRect(0, 0, width, height);
 
-	ctx.strokeStyle = "rgb(3 252 219 / 100%)";
+	ctx.strokeStyle = strokeStyle;
 	ctx.beginPath();
 	ctx.moveTo(pointArr[0].x, pointArr[0].y);
 	for (let i=1; i<pointArr.length; i++) {
