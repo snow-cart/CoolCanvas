@@ -147,4 +147,6 @@ function updateResolution() {
 		height = _height;
 		width = _width;
 	}
+	c.width = width;
+	c.height = height;
 }
