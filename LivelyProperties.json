@@ -11,25 +11,11 @@
 	"shape1color": {
 		"text": "Color of first shape",
 		"type": "color",
-		"value": "#C0C0C0"
+		"value": "#6FD2F7"
 	},
 	"shape2color": {
 		"text": "Color of second shape",
 		"type": "color",
-		"value": "#C0C0C0"
-	},
-	"resolution": {
-		"max": 2560,
-		"min": 640,
-		"step": 640,
-		"text": "Resolution",
-		"type": "slider",
-		"help": "Pixels along the x axis (y axis for portrait)",
-		"value": 1280
-	},
-	"isPortrait": {
-		"type": "checkbox",
-		"value": false,
-		"text": "Is display portrait?"
+		"value": "#F79CD6"
 	}
 }
