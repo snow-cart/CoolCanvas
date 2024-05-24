@@ -1,11 +1,7 @@
 var width = 1280,
-	_width = width, // useless if not using Lively
 	height = 1024,
-	_height = height, // useless if not using Lively
 	shape1color = `111 210 247`, 
-	shape2color = `247 156 214`, 
-	fillOpacity = 3;
-	isPortrait = false; // useless if not using Lively
+	shape2color = `247 156 214`;
 
 class Point {
 	constructor (x, y, deltaX, deltaY) {
@@ -57,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () =>{
 
 	ctx.fillStyle = "rgb(15 15 15 / 100%)";
 	ctx.fillRect(0, 0, width, height);
-	ctx.fillStyle = `rgb(0 0 0 / ${fillOpacity}%)`;
+	ctx.fillStyle = "rgb(0 0 0 / 3%)";
 	ctx.lineJoin = "round";
 
 	document.addEventListener("click", () => {
@@ -115,7 +111,7 @@ function hexToRgb(hex) {
 function livelyPropertyListener(name, val) {
 	switch(name) {
 		case "shadow":
-			fillOpacity = 100 - val;
+			document.getElementById("myCanvas").getContext("2d").fillStyle(`rgb(15 15 15 / ${100 - val}%)`)
 			break;
 		case "shape1color":
 			shape1color = hexToRgb(val);
@@ -124,29 +120,5 @@ function livelyPropertyListener(name, val) {
 		case "shape2color":
 			shape2color = hexToRgb(val);
 			break;
-
-		case "resolution":
-			_width = val;
-			_height = val * 0.5625;
-			updateResolution();
-			break;
-
-		case "isPortrait":
-			isPortrait = val;
-			updateResolution();
-			break;
 	}
-}
-
-function updateResolution() {
-	if (isPortrait === true) {
-		height = _width;
-		width = _height;
-	}
-	else {
-		height = _height;
-		width = _width;
-	}
-	c.width = width;
-	c.height = height;
 }
