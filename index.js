@@ -1,4 +1,11 @@
-var width, height;
+var width = 1280,
+	_width = width, // useless if not using Lively
+	height = 1024,
+	_height = height, // useless if not using Lively
+	shape1color = `111 210 247`, 
+	shape2color = `247 156 214`, 
+	fillOpacity = 3;
+	isPortrait = false; // useless if not using Lively
 
 class Point {
 	constructor (x, y, deltaX, deltaY) {
@@ -50,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () =>{
 
 	ctx.fillStyle = "rgb(15 15 15 / 100%)";
 	ctx.fillRect(0, 0, width, height);
-	ctx.fillStyle = "rgb(0 0 0 / 3%)";
+	ctx.fillStyle = `rgb(0 0 0 / ${fillOpacity}%)`;
 	ctx.lineJoin = "round";
 
 	document.addEventListener("click", () => {
@@ -61,8 +68,8 @@ document.addEventListener("DOMContentLoaded", () =>{
 	let pointArrArr = [makeArr(pointCount), makeArr(pointCount)];
 
 	setInterval(() => {
-		drawLine(ctx, pointArrArr[0], strokeStyle="rgb(111 210 247 / 100%)");
-		drawLine(ctx, pointArrArr[1], strokeStyle="rgb(247 156 214 / 100%)");
+		drawLine(ctx, pointArrArr[0], strokeStyle=`rgb(${shape1color} / 100%)`);
+		drawLine(ctx, pointArrArr[1], strokeStyle=`rgb(${shape2color} / 100%)`);
 	}, 10);
 
 
@@ -94,4 +101,50 @@ function makeArr(pointCount = 4) {
 	for (let i=0; i<pointCount; i++) 
 		pointArr.push(new Point(f(width), f(height), f(4, 2), f(4, 2)));
 	return pointArr;
+}
+
+// From this point on, it's just Lively Wallpaper specific
+
+function hexToRgb(hex) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? 
+		`${parseInt(result[1], 16)} ${parseInt(result[2], 16)} ${parseInt(result[3], 16)}`
+	: null;
+}
+
+function livelyPropertyListener(name, val) {
+	switch(name) {
+		case "shadow":
+			fillOpacity = 100 - val;
+			break;
+		case "shape1color":
+			shape1color = hexToRgb(val);
+			break;
+
+		case "shape2color":
+			shape2color = hexToRgb(val);
+			break;
+
+		case "resolution":
+			_width = val;
+			_height = val;
+			updateResolution();
+			break;
+
+		case "isPortrait":
+			isPortrait = val;
+			updateResolution();
+			break;
+	}
+}
+
+function updateResolution() {
+	if (isPortrait === true) {
+		height = _widht;
+		width = _height;
+	}
+	else {
+		height = _height;
+		width = _width;
+	}
 }
