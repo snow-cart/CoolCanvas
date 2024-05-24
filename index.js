@@ -64,11 +64,15 @@ document.addEventListener("DOMContentLoaded", () =>{
 	drawLine(ctx, pointArr);
 	});
 
-	setInterval(() => {drawLine(ctx, pointArr)}, 10);
+	setInterval(() => {
+		drawLine(ctx, pointArr, strokeStyle="rgb(3 252 219 / 100%)");
+		drawLine(ctx, pointArr, strokeStyle="rgb(3 252 219 / 100%)");
+	}, 10);
+
 
 });
 
-function drawLine (ctx, pointArr=[]) {
+function drawLine (ctx, pointArr=[], strokeStyle="rgb(3 252 219 / 100%)") {
 	
 	ctx.fillStyle = "rgb(0 0 0 / 20%)";
 	ctx.fillRect(0, 0, width, height);
